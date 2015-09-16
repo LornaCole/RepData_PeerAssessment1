@@ -1,6 +1,3 @@
----
-output: html_document
----
 
 Reproducible Research:  Assignment 1
 ======================================================================================================================
@@ -84,6 +81,7 @@ ggplot(SUMACT, aes(x=Total_Steps)) +
         colour="black", fill="lightblue") +
         ylab("Count of Number of Days") +
         ggtitle("Histogram of Total Number of Steps Per Day")
+
 ```
 
 
@@ -108,6 +106,7 @@ To explore the average daily activity pattern the data is meaned for each 5 minu
 SUMDAY<- ACT %>%
         group_by(interval) %>%
         summarize(steps = mean(steps, na.rm=TRUE))
+
 ```
 
 
@@ -163,7 +162,7 @@ NEW<-NEW[, c(1,3,5)]
 
 For each day the total number of steps is then re-calcuated using the new data set where the missing values have been replaced by the mean values (i.e. for each specific 5 minute interval). A histogram is then drawn for the total number of steps taken each day with missing values replaced.
 
-```{r Summary and Histogram,echo=TRUE, fig.height=4.5, fig.width=10}
+```{r Histogram2,echo=TRUE, fig.height=4.5, fig.width=10}
 SUMNEW<- NEW %>%
         group_by(date) %>%
         summarize(Total_Steps = sum(step.na.rm))
